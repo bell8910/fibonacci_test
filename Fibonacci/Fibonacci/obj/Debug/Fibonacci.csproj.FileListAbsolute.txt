@@ -1,0 +1,5 @@
+C:\Data\private\pingan\Fibonacci\Fibonacci\bin\Debug\Fibonacci.exe
+C:\Data\private\pingan\Fibonacci\Fibonacci\bin\Debug\Fibonacci.pdb
+C:\Data\private\pingan\Fibonacci\Fibonacci\obj\Debug\Fibonacci.csprojResolveAssemblyReference.cache
+C:\Data\private\pingan\Fibonacci\Fibonacci\obj\Debug\Fibonacci.exe
+C:\Data\private\pingan\Fibonacci\Fibonacci\obj\Debug\Fibonacci.pdb

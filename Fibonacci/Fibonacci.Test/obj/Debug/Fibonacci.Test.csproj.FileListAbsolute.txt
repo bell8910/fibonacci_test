@@ -1,0 +1,7 @@
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\bin\Debug\Fibonacci.Test.dll
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\bin\Debug\Fibonacci.Test.pdb
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\bin\Debug\Fibonacci.exe
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\bin\Debug\Fibonacci.pdb
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\obj\Debug\Fibonacci.Test.csprojResolveAssemblyReference.cache
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\obj\Debug\Fibonacci.Test.dll
+C:\Data\private\pingan\Fibonacci\Fibonacci.Test\obj\Debug\Fibonacci.Test.pdb
