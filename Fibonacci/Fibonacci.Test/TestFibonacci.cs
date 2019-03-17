@@ -46,7 +46,7 @@ namespace Fibonacci.Test
             var y = new string[2, 2] { { "1", "0" }, { "0", "1" } };
           //  var z = Fibonacci.Matrix_mul(x, y);
            string value = null;
-            /*
+            
            var n2 = Fibonacci.Get_FirstN_By_Matrix_power(2,out value);
             Debug.WriteLine("n={0},value={1}",n2,value);
             Assert.AreEqual(n2,7);
@@ -56,7 +56,7 @@ namespace Fibonacci.Test
             Debug.WriteLine("n={0},value={1}", n3, value);
             Assert.AreEqual(n3,12);
             Assert.AreEqual(value, "144");
-            */
+            
 
            // var start = Fibonacci.Get_LastN_By_Matrix_power(1000);
             // var result = Fibonacci.Check_N_By_BinarySearch(4096);
