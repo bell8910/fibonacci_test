@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Fibonacci
@@ -10,10 +11,62 @@ namespace Fibonacci
     {
         public static string[,] FiboMatrix = new string[2, 2] { { "1", "1" }, { "1", "0" } };
 
+        class MatrixValue
+        {
+            public string x;
+            public string[,] sqrValue;
+        }
+        private const int minLengthForCache = 20;
+        private static Dictionary<int, List<MatrixValue>> _matrixCache = new Dictionary<int, List<MatrixValue>>();
+
+        public static string[,] GetFromCache(int hash,string xValue)
+        {
+            
+            if (_matrixCache.ContainsKey(hash))
+            {
+                var mVal = _matrixCache[hash].FirstOrDefault(m => m.x == xValue);
+                if (mVal != null)
+                {
+                    return mVal.sqrValue;
+                }
+            }
+
+            return null;
+        }
+
+        public static void SetValueToCache(int hash,string xValue,string[,] sqrValue)
+        {
+            List<MatrixValue> mValList = null;
+            if (_matrixCache.ContainsKey(hash))
+                mValList = _matrixCache[hash];
+            else
+            {
+                mValList = new List<MatrixValue> {};
+                _matrixCache.Add(hash,mValList);
+            }
+            mValList.Add(new MatrixValue
+                {
+                    x = xValue,
+                    sqrValue = sqrValue
+                });
+            
+        }
 
         //矩阵乘法
         public static string[,] Matrix_mul(string[,] x, string[,] y)
         {
+            var needSaveToCache = false;
+            int hash=0;
+            var value = x[0, 1];
+            if (x[0, 1].Length > minLengthForCache && x[0, 1] == y[0, 1])
+            {
+                hash = Md5Helper.ComputeHash(value);
+                var res = GetFromCache(hash,value);
+                if (res != null)
+                    return res;
+                needSaveToCache = true;
+            }
+
             int i, j, k;
             var tmp = new string[2, 2] { { "0", "0" }, { "0", "0" } };
             for (i = 0; i < 2; i++)
@@ -23,6 +76,11 @@ namespace Fibonacci
                         var xy = Karatsuba.karatsuba(x[i, k], y[k, j]);
                         tmp[i,j] = BigInteger2.Add(tmp[i, j].ToCharArray(),xy.ToCharArray());
                     }
+
+
+            if (needSaveToCache)
+                SetValueToCache(hash, value, tmp);
+
             return tmp;
         }
 
@@ -38,6 +96,7 @@ namespace Fibonacci
 
         }
 
+        
 
         // 矩阵快速求幂判断是否大于长度length
         // true 表示 >= length
@@ -71,7 +130,7 @@ namespace Fibonacci
         //折半查找
         public static int Get_N_By_BinarySearch(int start, int end, int length,ref string value)
         {
-            //Debug.WriteLine("start={0},end={1}", start, end);
+             Debug.WriteLine("start={0},end={1}", start, end);
              Console.WriteLine("start={0},end={1}",start,end);
             if (end - start <= 1)
             {
